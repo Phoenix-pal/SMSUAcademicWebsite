@@ -1,0 +1,21 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "resource"
+    label: "Academic Resources"
+    files:
+      - label: "Resource Content"
+        name: "resource_content"
+        file: "src/data/resource.json"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+          - label: "Body"
+            name: "body"
+            widget: "text"
