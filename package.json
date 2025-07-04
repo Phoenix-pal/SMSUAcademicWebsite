@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
   "dev": "next dev",
-  "build": "next build && next export"
+  "build": "next build"
 },
   "dependencies": {
     "react": "^19.0.0",
