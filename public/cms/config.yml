@@ -7,15 +7,12 @@ public_folder: "/uploads"
 
 collections:
   - name: "resource"
-    label: "Academic Resources"
+    label: "Academic Resource"
     files:
-      - label: "Resource Content"
-        name: "resource_content"
-        file: "src/data/resource.json"
+      - file: "src/data/resource.json"
+        label: "Resource Data"
+        name: "resource"
         fields:
-          - label: "Title"
-            name: "title"
-            widget: "string"
-          - label: "Body"
-            name: "body"
-            widget: "text"
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Link", name: "link", widget: "string" }
