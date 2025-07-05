@@ -14,7 +14,7 @@ collections:
   - name: "resource"
     label: "Academic Resource"
     label_singular: "Resource"
-    folder: "public/data/resources"
+    folder: "public/data/resource"
     create: true
     extension: "json"
     format: "json"
