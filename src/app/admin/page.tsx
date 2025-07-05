@@ -50,49 +50,61 @@ export default function Page() {
     setData({ ...data, updates: newUpdates });
   };
 
-  if (!isAuthenticated) return null; // 🕒 รอ login
+  //if (!isAuthenticated) return null; // 🕒 รอ login
 
   return (
     <div className="max-w-3xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold text-blue-800 mb-6">แก้ไขหน้า Academic Resource</h1>
+  <h1 className="text-3xl font-bold text-blue-800 mb-6">แก้ไขหน้า Academic Resource</h1>
 
-      <div className="mb-4">
-        <label className="font-semibold text-gray-700">หัวข้อ:</label>
-        <input
-          className="w-full border px-3 py-2 rounded mt-1"
-          value={data.header}
-          onChange={(e) => setData({ ...data, header: e.target.value })}
-        />
-      </div>
+  <div className="mb-4">
+    <label className="font-semibold text-gray-700">หัวข้อ:</label>
+    <input
+      className="w-full border px-3 py-2 rounded mt-1"
+      value={data.header}
+      onChange={(e) => setData({ ...data, header: e.target.value })}
+    />
+  </div>
 
-      <div className="mb-4">
-        <label className="font-semibold text-gray-700">คำอธิบาย:</label>
-        <textarea
-          className="w-full border px-3 py-2 rounded mt-1"
-          rows={3}
-          value={data.description}
-          onChange={(e) => setData({ ...data, description: e.target.value })}
-        ></textarea>
-      </div>
+  <div className="mb-4">
+    <label className="font-semibold text-gray-700">คำอธิบาย:</label>
+    <textarea
+      className="w-full border px-3 py-2 rounded mt-1"
+      rows={3}
+      value={data.description}
+      onChange={(e) => setData({ ...data, description: e.target.value })}
+    ></textarea>
+  </div>
 
-      <div className="mb-4">
-        <label className="font-semibold text-gray-700">Recent Updates:</label>
-        {data.updates.map((item, i) => (
-          <input
-            key={i}
-            className="w-full border px-3 py-2 rounded mt-2"
-            value={item}
-            onChange={(e) => handleUpdate(i, e.target.value)}
-          />
-        ))}
-      </div>
+  <div className="mb-4">
+    <label className="font-semibold text-gray-700">Recent Updates:</label>
+    {data.updates.map((item, i) => (
+      <input
+        key={i}
+        className="w-full border px-3 py-2 rounded mt-2"
+        value={item}
+        onChange={(e) => handleUpdate(i, e.target.value)}
+      />
+    ))}
+  </div>
 
-      <button
-        className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
-        onClick={() => alert('ข้อมูลถูกบันทึก (จำลอง)')}
-      >
-        บันทึก
-      </button>
-    </div>
+  <button
+    className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+    onClick={async () => {
+      const res = await fetch('/api/resource', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        alert('✅ ข้อมูลถูกบันทึกแล้ว!');
+      } else {
+        alert('❌ บันทึกไม่สำเร็จ');
+      }
+    }}
+  >
+    บันทึก
+  </button>
+</div>
   );
 }

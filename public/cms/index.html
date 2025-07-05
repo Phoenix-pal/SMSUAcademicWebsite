@@ -38,32 +38,17 @@
     <button onclick="window.netlifyIdentity.open()">Login / Sign up</button>
 
     <script>
-  window.CMS_MANUAL_INIT = true;
-
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", (user) => {
-      if (!user) {
-        window.netlifyIdentity.on("login", (user) => {
-          localStorage.setItem("admin-token", "valid"); // ✅ จำลองว่า login แล้ว
-          document.location.href = "/admin";
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user) => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/cms/";
+            });
+          }
         });
-      } else {
-          localStorage.setItem("admin-token", "valid"); // ✅ จำลองว่า login แล้ว
-          document.location.href = "/admin";
+        window.netlifyIdentity.init();
       }
-    });
-    window.netlifyIdentity.init();
-  }
-
-  function loadCMS() {
-    const wait = setInterval(() => {
-      if (window.CMS && document.getElementById("nc-root")) {
-        clearInterval(wait);
-        window.CMS.init();
-      }
-    }, 100);
-  }
-</script>
+    </script>
 
   </body>
 </html>

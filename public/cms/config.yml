@@ -5,21 +5,14 @@ backend:
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
-media_library:
-  name: uploadcare
-  config:
-    publicKey: demopublickey
-
 collections:
   - name: "resource"
     label: "Academic Resource"
-    label_singular: "Resource"
-    folder: "public/data/resource"
-    create: true
-    extension: "json"
-    format: "json"
-    identifier_field: "title"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Link", name: "link", widget: "string" }
+    files:
+      - file: "public/data/resource.json"
+        label: "Academic Resource"
+        name: "resource"
+        fields:
+          - { label: "Title", name: "header", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Updates", name: "updates", widget: "list", default: [] }
