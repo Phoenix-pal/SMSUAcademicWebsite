@@ -44,7 +44,8 @@
     window.netlifyIdentity.on("init", (user) => {
       if (!user) {
         window.netlifyIdentity.on("login", (user) => {
-          document.location.href = "/admin_resource/resource";
+          localStorage.setItem("admin-token", "valid"); // ✅ จำลองว่า login แล้ว
+          document.location.href = "/admin";
         });
       } else {
         loadCMS();
