@@ -48,7 +48,8 @@
           document.location.href = "/admin";
         });
       } else {
-        loadCMS();
+          localStorage.setItem("admin-token", "valid"); // ✅ จำลองว่า login แล้ว
+          document.location.href = "/admin";
       }
     });
     window.netlifyIdentity.init();

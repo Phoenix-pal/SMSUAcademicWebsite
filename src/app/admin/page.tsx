@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+
 interface ResourceData {
   header: string;
   description: string;
@@ -49,7 +50,7 @@ export default function Page() {
     setData({ ...data, updates: newUpdates });
   };
 
- // if (!isAuthenticated) return null; // 🕒 รอ login
+  if (!isAuthenticated) return null; // 🕒 รอ login
 
   return (
     <div className="max-w-3xl mx-auto py-12 px-4">
