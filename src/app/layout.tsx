@@ -23,9 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="space-x-4 text-sm md:text-base">
               <Link href="/" className="hover:underline text-sky-800">Home</Link>
               <Link href="/about" className="hover:underline text-sky-800">About Us</Link>
-              <Link href="/activity" className="hover:underline text-sky-800">Acad Activity</Link>
-              <Link href="/resource" className="hover:underline text-sky-800">Acad Resource</Link>
-              <Link href="/curriculum" className="hover:underline text-sky-800">Curriculum Dev.</Link>
+              <Link href="/activity" className="hover:underline text-sky-800">Activity</Link>
+              <Link href="/resource" className="hover:underline text-sky-800">Resource</Link>
+              <Link href="/curriculum" className="hover:underline text-sky-800">Cur Dev</Link>
             </div>
 
             {/* Right: Edit button */}

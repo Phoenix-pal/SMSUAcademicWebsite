@@ -15,15 +15,15 @@ export default function HomePage() {
         {/* Content Blocks */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg shadow p-6 text-center">
-            <h3 className="text-xl font-semibold mb-2">Acad Activity</h3>
+            <h3 className="text-xl font-semibold mb-2">Activity</h3>
             <p className="text-gray-600 text-sm">คลิกแล้วจะไปหน้า Activity หรือแสดง Content บางส่วน</p>
           </div>
           <Link href="/resource" className="bg-white rounded-lg shadow p-6 text-center hover:bg-sky-50 transition">
-            <h3 className="text-xl font-semibold mb-2">Acad Resource</h3>
+            <h3 className="text-xl font-semibold mb-2">Resource</h3>
             <p className="text-gray-600 text-sm">Resource of Siriraj</p>
           </Link>
           <div className="bg-white rounded-lg shadow p-6 text-center">
-            <h3 className="text-xl font-semibold mb-2">Curriculum Dev.</h3>
+            <h3 className="text-xl font-semibold mb-2">Cur Dev</h3>
             <p className="text-gray-600 text-sm">คลิกเพื่อเข้าสู่เนื้อหาเกี่ยวกับหลักสูตร</p>
           </div>
         </div>
