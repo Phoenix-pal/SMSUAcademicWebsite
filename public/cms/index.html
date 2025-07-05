@@ -5,50 +5,26 @@
     <title>SMSU CMS</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: sans-serif;
-        background: #f0f4f8;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      button {
-        padding: 14px 28px;
-        font-size: 18px;
-        background-color: #3b82f6;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      }
-      button:hover {
-        background-color: #2563eb;
-      }
-    </style>
   </head>
   <body>
-    <div id="nc-root"></div>
-
-    <!-- ปุ่ม Login/Sign up อยู่กลางจอ -->
-    <button onclick="window.netlifyIdentity.open()">Login / Sign up</button>
+    <div id="nc-root"></div> <!-- ✅ CMS จะ render ที่นี่ -->
 
     <script>
+      window.CMS_MANUAL_INIT = true;
+
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
+          if (user) {
+            window.CMS.init(); // ✅ แสดง CMS editor
+          } else {
             window.netlifyIdentity.on("login", () => {
-              document.location.href = "/cms/";
+              window.CMS.init();
             });
           }
         });
+
         window.netlifyIdentity.init();
       }
     </script>
-
   </body>
 </html>
