@@ -49,7 +49,7 @@ export default function Page() {
     setData({ ...data, updates: newUpdates });
   };
 
-  if (!isAuthenticated) return null; // 🕒 รอ login
+ // if (!isAuthenticated) return null; // 🕒 รอ login
 
   return (
     <div className="max-w-3xl mx-auto py-12 px-4">
