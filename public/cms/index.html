@@ -44,7 +44,7 @@
     window.netlifyIdentity.on("init", (user) => {
       if (!user) {
         window.netlifyIdentity.on("login", (user) => {
-          loadCMS();
+          document.location.href = "/admin/resource";
         });
       } else {
         loadCMS();

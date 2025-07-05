@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
 
             {/* Right: Edit button */}
-            <button className="bg-white text-sky-800 px-3 py-1 rounded hover:bg-sky-100 text-sm border border-sky-300 shadow-sm">Edit</button>
+            <Link href="/cms/index.html" className="hover:underline text-sky-800">Admin</Link>
           </div>
         </nav>
 

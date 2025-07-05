@@ -1,4 +1,3 @@
-// src/app/admin/resource/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -19,15 +18,29 @@ const defaultData: ResourceData = {
 export default function Page() {
   const router = useRouter();
   const [data, setData] = useState<ResourceData>(defaultData);
-  const [editMode, setEditMode] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const token = localStorage.getItem('admin-token');
-      if (token !== 'valid') {
-        router.replace('/login');
+    const checkAuth = () => {
+      const identity = (window as any).netlifyIdentity;
+      if (!identity) {
+        setTimeout(checkAuth, 200);
+        return;
       }
-    }
+
+      identity.on('init', (user: any) => {
+        if (!user) {
+          router.replace('/cms'); // ❌ ไม่ได้ login → redirect ไปหน้า CMS login
+        } else {
+          setIsAuthenticated(true); // ✅ ได้ login แล้ว
+          localStorage.setItem('admin-token', 'valid');
+        }
+      });
+
+      identity.init();
+    };
+
+    checkAuth();
   }, [router]);
 
   const handleUpdate = (index: number, value: string) => {
@@ -35,6 +48,8 @@ export default function Page() {
     newUpdates[index] = value;
     setData({ ...data, updates: newUpdates });
   };
+
+  if (!isAuthenticated) return null; // 🕒 รอ login
 
   return (
     <div className="max-w-3xl mx-auto py-12 px-4">
