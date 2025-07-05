@@ -3,23 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <title>SMSU CMS</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   </head>
   <body>
-    <!-- ✅ ต้องมี div นี้ ก่อนโหลด script -->
     <div id="nc-root"></div>
 
-    <!-- ✅ โหลด script CMS หลัง DOM -->
+    <!-- ปุ่ม Login/Sign up ด้านขวาบน -->
+    <div style="position: fixed; top: 10px; right: 10px; z-index: 9999;">
+      <button onclick="window.netlifyIdentity.open()">Login / Sign up</button>
+    </div>
+
     <script>
-      const script = document.createElement('script');
-      script.src = 'https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js';
-      script.onload = () => {
-        if (window.CMS) {
-          window.CMS.init(); // เรียก CMS อย่างปลอดภัย
-        } else {
-          console.error('Netlify CMS failed to load.');
-        }
-      };
-      document.body.appendChild(script);
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user) => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/cms/";
+            });
+          }
+        });
+        window.netlifyIdentity.init();
+      }
     </script>
   </body>
 </html>
