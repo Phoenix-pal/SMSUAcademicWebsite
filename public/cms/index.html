@@ -9,18 +9,16 @@
   <body>
     <div id="nc-root"></div>
 
-    <!-- ปุ่ม Login/Sign up ด้านขวาบน -->
-    <div style="position: fixed; top: 10px; right: 10px; z-index: 9999;">
-      <button onclick="window.netlifyIdentity.open()">Login / Sign up</button>
-    </div>
-
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
           if (!user) {
+            window.netlifyIdentity.open();
             window.netlifyIdentity.on("login", () => {
-              document.location.href = "/cms/";
+              window.location.reload();
             });
+          } else {
+            window.CMS.init();
           }
         });
         window.netlifyIdentity.init();
