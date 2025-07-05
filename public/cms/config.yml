@@ -9,8 +9,8 @@ collections:
   - name: "resource"
     label: "Academic Resource"
     files:
-      - file: "src/data/resource.json"
-        label: "Resource Data"
+      - file: "public/data/resource.json"   # ✅ เปลี่ยนตรงนี้
+        label: "Academic Resource"
         name: "resource"
         fields:
           - { label: "Title", name: "title", widget: "string" }

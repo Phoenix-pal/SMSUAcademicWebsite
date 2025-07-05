@@ -6,7 +6,7 @@ export default function AcademicResourcePage() {
       {/* Header */}
       <div className="text-center mb-10">
         <h1 className="text-4xl font-bold text-blue-700">ACADEMIC RESOURCE</h1>
-        <p className="text-gray-600 mt-2">คลังแหล่งเรียนรู้ของนักเรียน ครูและบุคลากร</p>
+        <p className="text-gray-600 mt-2">คลังแหล่งเรียนรู้ของนักศึกษาแพทย์</p>
         <p className="text-gray-400 text-sm"># guide, การสร้างชุมชนแห่งการเรียนรู้</p>
       </div>
 
