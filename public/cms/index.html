@@ -5,63 +5,22 @@
     <title>SMSU CMS</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #f0f4f8;
-        font-family: sans-serif;
-      }
-      #login-container {
-        text-align: center;
-        z-index: 1000;
-      }
-      button {
-        padding: 12px 24px;
-        font-size: 16px;
-        background-color: #3b82f6;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #2563eb;
-      }
-      #nc-root {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: none;
-      }
-    </style>
   </head>
   <body>
-    <div id="login-container">
-      <button onclick="window.netlifyIdentity.open()">Login / Sign up</button>
-    </div>
     <div id="nc-root"></div>
 
-    <script>
-      window.CMS_MANUAL_INIT = true;
+    <!-- ปุ่ม Login/Sign up ด้านขวาบน -->
+    <div style="position: fixed; top: 10px; right: 10px; z-index: 9999;">
+      <button onclick="window.netlifyIdentity.open()">Login / Sign up</button>
+    </div>
 
+    <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
-          if (user) {
-            document.getElementById("login-container").style.display = "none";
-            document.getElementById("nc-root").style.display = "block";
-            const waitForCMS = setInterval(() => {
-              if (window.CMS) {
-                clearInterval(waitForCMS);
-                window.CMS.init();
-              }
-            }, 100);
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/cms/";
+            });
           }
         });
         window.netlifyIdentity.init();
