@@ -3,21 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <title>SMSU CMS</title>
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   </head>
   <body>
-    <!-- ✅ ต้องมี div นี้ เพื่อให้ CMS render ลงมาได้ -->
+    <!-- ✅ ต้องมี div นี้ ก่อนโหลด script -->
     <div id="nc-root"></div>
 
+    <!-- ✅ โหลด script CMS หลัง DOM -->
     <script>
-      // ✅ ให้ CMS init หลัง DOM โหลดเสร็จ
-      window.addEventListener('DOMContentLoaded', function () {
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js';
+      script.onload = () => {
         if (window.CMS) {
-          window.CMS.init(); // important
+          window.CMS.init(); // เรียก CMS อย่างปลอดภัย
         } else {
-          console.error("Netlify CMS script not loaded.");
+          console.error('Netlify CMS failed to load.');
         }
-      });
+      };
+      document.body.appendChild(script);
     </script>
   </body>
 </html>

@@ -1,18 +1,13 @@
-backend:
-  name: git-gateway
-  branch: main
-
-media_folder: "public/uploads"
-public_folder: "/uploads"
-
 collections:
   - name: "resource"
     label: "Academic Resource"
-    files:
-      - file: "public/data/resource.json"   # ✅ เปลี่ยนตรงนี้
-        label: "Academic Resource"
-        name: "resource"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Link", name: "link", widget: "string" }
+    label_singular: "Resource"
+    folder: "public/data/resources"
+    create: true
+    extension: "json"
+    format: "json"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Link", name: "link", widget: "string" }
