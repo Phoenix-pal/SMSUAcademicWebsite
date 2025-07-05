@@ -5,24 +5,57 @@
     <title>SMSU CMS</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f0f4f8;
+        font-family: sans-serif;
+      }
+      #login-container {
+        text-align: center;
+      }
+      button {
+        padding: 12px 24px;
+        font-size: 16px;
+        background-color: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #2563eb;
+      }
+    </style>
   </head>
   <body>
     <div id="nc-root"></div>
 
+    <div id="login-container">
+      <button onclick="window.netlifyIdentity.open()">Login / Sign up</button>
+    </div>
+
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.open();
-            window.netlifyIdentity.on("login", () => {
-              window.location.reload();
-            });
-          } else {
-            window.CMS.init();
-          }
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        window.netlifyIdentity.open();
+        window.netlifyIdentity.on("login", () => {
+          // ✅ หลัง login เรียก CMS.init() และ reload
+          window.location.reload();
         });
-        window.netlifyIdentity.init();
+      } else {
+        // ✅ ถ้า login อยู่แล้ว → เรียก CMS.init()
+        window.CMS.init();
       }
-    </script>
+    });
+    window.netlifyIdentity.init();
+  }
+</script>
   </body>
 </html>
