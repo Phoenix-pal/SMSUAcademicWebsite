@@ -1,33 +1,35 @@
+// src/app/api/resource/route.ts
 import { NextResponse } from 'next/server';
-import clientPromise from '@/lib/mongo'; // ต้องใช้ lib/mongo.ts ที่จัดการ connection
+import { MongoClient } from 'mongodb';
 
-const dbName = 'smsudb'; // เปลี่ยนเป็นชื่อ database จริง
+const uri = "mongodb+srv://farophoenix:smsuacademic@smsudb.2ybcdod.mongodb.net/?retryWrites=true&w=majority&appName=smsudb";;
+const dbName = 'smsudb'; // เปลี่ยนให้ตรงกับชื่อ database ที่คุณตั้งไว้
 
 export async function GET() {
-  try {
-    const client = await clientPromise;
-    const db = client.db(dbName);
-    const collection = db.collection('test_collection');
+  const client = await MongoClient.connect(uri);
+  console.log()
+  const db = client.db(dbName);
+  const collection = db.collection('resources');
 
-    // ✅ สร้าง document ทดลอง
-    const insertResult = await collection.insertOne({
-      message: 'Hello MongoDB from Vercel!',
-      createdAt: new Date(),
-    });
+  const data = await collection.findOne({});
+  client.close();
 
-    // ✅ อ่าน document ล่าสุด
-    const latest = await collection
-      .find({})
-      .sort({ createdAt: -1 })
-      .limit(1)
-      .toArray();
+  return NextResponse.json(data || {});
+}
 
-    return NextResponse.json({
-      insertedId: insertResult.insertedId,
-      latest,
-    });
-  } catch (error) {
-    console.error('[Mongo Test Error]', error);
-    return new NextResponse('Error connecting to MongoDB', { status: 500 });
-  }
+export async function POST(req: Request) {
+  const body = await req.json();
+
+  const client = await MongoClient.connect(uri);
+  const db = client.db(dbName);
+  const collection = db.collection('resources');
+
+  const result = await collection.updateOne(
+    {},
+    { $set: body },
+    { upsert: true } // ถ้าไม่มี document ให้สร้างใหม่
+  );
+
+  client.close();
+  return NextResponse.json({ success: true });
 }
