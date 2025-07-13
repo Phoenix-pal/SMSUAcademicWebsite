@@ -38,7 +38,7 @@ useEffect(() => {
 
 
                 {/* Section: Recent Update */}
-                <section className="mb-12">
+                <section id="Activity recent update" className="mb-12">
                     <h2 className="text-2xl font-semibold text-gray-800 mb-4">Recent Updates</h2>
                     <div className="space-y-3">
                         <div className="bg-white p-4 rounded shadow">Update 1:</div>
@@ -47,9 +47,9 @@ useEffect(() => {
                     </div>
                 </section>
 
-                {/* Section:Project */}
-                <section className="mb-12">
-                    <h2 className="text-2xl font-semibold text-gray-800 mb-4">Project</h2>
+                {/* Section:Projects */}
+                <section id="Activity Projects" className="mb-12">
+                    <h2 className="text-2xl font-semibold text-gray-800 mb-4">Projects</h2>
                     <div className="w-full bg-gray-50 py-12">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl mx-auto">
                             <div className="bg-white rounded-xl shadow p-6 aspect-square flex flex-col items-center justify-center">
@@ -73,7 +73,7 @@ useEffect(() => {
                 </section>
 
                 {/* Section: Activity Timeline */}
-                <section className="mb-12">
+                <section id="Activity timeline" className="mb-12">
                     <h2 className="text-2xl font-semibold text-gray-800 mb-4">Activity Timeline</h2>
                        <div className="flex flex-col items-center">
           <h2 className="text-2xl font-semibold mb-4">เลือกวันที่จากปฏิทิน</h2>

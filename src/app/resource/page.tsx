@@ -11,7 +11,7 @@ export default function AcademicResourcePage() {
       </div>
 
       {/* Section: Recent Update */}
-      <section className="mb-12">
+      <section id="Resource recent update" className="mb-12">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Recent Updates</h2>
         <div className="space-y-3">
           <div className="bg-white p-4 rounded shadow">Update 1: เพิ่มแนวทางกิจกรรม</div>
@@ -21,7 +21,7 @@ export default function AcademicResourcePage() {
       </section>
 
       {/* Section: Projects */}
-      <section className="mb-12">
+      <section id="Resource projects" className="mb-12">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white p-6 rounded shadow text-center">Library Guidebook</div>
@@ -31,7 +31,7 @@ export default function AcademicResourcePage() {
       </section>
 
       {/* Section: Resources */}
-      <section className="mb-12">
+      <section id="Resource resources" className="mb-12">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Resources</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div className="bg-white p-4 rounded shadow text-center">NL OSCE</div>
