@@ -14,10 +14,10 @@ export default function HomePage() {
 
         {/* Content Blocks */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg shadow p-6 text-center">
+          <Link href="/activity"  className="bg-white rounded-lg shadow p-6 text-center hover:bg-sky-50 transition">
             <h3 className="text-xl font-semibold mb-2">Activity</h3>
             <p className="text-gray-600 text-sm">คลิกแล้วจะไปหน้า Activity หรือแสดง Content บางส่วน</p>
-          </div>
+          </Link>
           <Link href="/resource" className="bg-white rounded-lg shadow p-6 text-center hover:bg-sky-50 transition">
             <h3 className="text-xl font-semibold mb-2">Resource</h3>
             <p className="text-gray-600 text-sm">Resource of Siriraj</p>
