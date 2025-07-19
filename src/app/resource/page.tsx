@@ -11,7 +11,7 @@ export default function AcademicResourcePage() {
       </div>
 
       {/* Section: Recent Update */}
-      <section id="Resource recent update" className="mb-12">
+      <section id="Resource recent update" className="mb-12 scroll-mt-24">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Recent Updates</h2>
         <div className="space-y-3">
           <div className="bg-white p-4 rounded shadow">Update 1: เพิ่มแนวทางกิจกรรม</div>
@@ -21,7 +21,7 @@ export default function AcademicResourcePage() {
       </section>
 
       {/* Section: Projects */}
-      <section id="Resource projects" className="mb-12">
+      <section id="Resource projects" className="mb-12 scroll-mt-24">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white p-6 rounded shadow text-center">Library Guidebook</div>
@@ -31,7 +31,7 @@ export default function AcademicResourcePage() {
       </section>
 
       {/* Section: Resources */}
-      <section id="Resource resources" className="mb-12">
+      <section id="Resource resources" className="mb-12 scroll-mt-24">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Resources</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div className="bg-white p-4 rounded shadow text-center">NL OSCE</div>
@@ -43,13 +43,15 @@ export default function AcademicResourcePage() {
       </section>
 
       {/* Section: Feedback */}
-      <section className="mb-16">
+      <section className="mb-16 scroll-mt-24">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Feedback</h2>
-        <textarea
-          placeholder="ข้อเสนอแนะ..."
-          className="w-full p-3 border rounded shadow"
-          rows={4}
-        ></textarea>
+        <div className="space-y-3">
+          <div className="bg-white p-4 rounded shadow">
+            <a href="https://www.example.com" className="text-blue-500 hover:underline hover:bg-sky-50 transition">
+              Feedback
+            </a>
+          </div>
+        </div>
       </section>
     </div>
   );
